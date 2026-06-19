@@ -43,7 +43,7 @@ class EditFlow(config_entries.OptionsFlow):
     async def async_step_init(self, user_input=None):
         if user_input is not None:
             _LOGGER.error(user_input)
-            return self.async_create_entry(title="", data=user_input)
+            return self.async_update_and_abort(self.config_entry, options=user_input)
         return self.async_show_form(
             step_id='init',
             data_schema=vol.Schema(
